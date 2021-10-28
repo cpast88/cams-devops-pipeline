@@ -29,11 +29,12 @@ pipeline {
 
             }
         }
-       stage('DB changes: true') {
+      // stage('DB changes: true') {
+      stage('Database docker build') {
             when {
                 environment name: 'BUILD_DB', value: 'true'
             }
-                stage('Database docker build') {
+                
                     steps {
                         // modify to build docker image and push to Harbor
                     	    echo "Building database image"
@@ -47,7 +48,7 @@ pipeline {
                             }
                         }
 		}
-		}
+		//}
             } post {
                         // modify to clean local image in docker
 		  always {
