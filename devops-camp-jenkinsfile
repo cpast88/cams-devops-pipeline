@@ -112,7 +112,6 @@ sh 'rm -rf .git ./*'
                 echo "Deployment stage"
             }
         }
-    }
     post {
         cleanup {
             echo "Clean workspace"
