@@ -10,7 +10,6 @@ pipeline {
     }
 
     stages {
-	    stages {
         stage('Application repository') {
             steps {
                 echo "Cloning application repository"
@@ -19,6 +18,7 @@ pipeline {
                     script {
                         env.DB_HASH = sh(script: 'git log --format=format:%h -1 --follow database/database.sql', returnStdout: true).trim()
                     }
+		 }
 
 		// build database
 		withCredentials([usernamePassword(credentialsId: 'cpastore-harbor-auth', usernameVariable: 'student03', passwordVariable: 'Student714!')]) {
@@ -27,7 +27,6 @@ pipeline {
                     }
                 }
 
-                }
             }
         }
        stage('DB changes: true') {
